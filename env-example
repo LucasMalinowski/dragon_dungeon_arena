@@ -1,0 +1,9 @@
+# You would typically use rake secret to generate a secure token. It is
+# critical that you keep this value private in production.
+SECRET_TOKEN=b4t4t4_d0c3_5up3r_s3cr3t4
+
+WORKER_PROCESSES=1
+LISTEN_ON=0.0.0.0:8010
+DATABASE_URL=postgresql://postgres:postgres@postgres:5432/dragon_dungeon_arena?encoding=utf8&pool=5&timeout=5000
+CACHE_URL=redis://redis:6379/0
+JOB_WORKER_URL=redis://redis:6379/0

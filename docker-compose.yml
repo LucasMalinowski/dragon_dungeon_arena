@@ -1,0 +1,56 @@
+version: "3.9"
+
+services:
+
+  postgres:
+    image: postgres:14.2
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - '5432:5432'
+    volumes:
+      - dragon_dungeon_arena-postgres:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7.0
+    ports:
+      - '6379:6379'
+    volumes:
+      - dragon_dungeon_arena-redis:/var/lib/redis/data
+
+  dragon_dungeon_arena:
+    build:
+      context: .
+    volumes:
+      - ./dragon_dungeon_arena:/opt/app
+    links:
+      - postgres
+      - redis
+    ports:
+      - '8010:8010'
+    env_file:
+      - .env
+
+  sidekiq:
+    build:
+      context: .
+    command: bundle exec sidekiq
+    links:
+      - postgres
+      - redis
+    env_file:
+      - .env
+
+  nginx:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.nginx
+    links:
+      - dragon_dungeon_arena
+    ports:
+      - '8020:8020'
+
+volumes:
+  dragon_dungeon_arena-postgres:
+  dragon_dungeon_arena-redis:
