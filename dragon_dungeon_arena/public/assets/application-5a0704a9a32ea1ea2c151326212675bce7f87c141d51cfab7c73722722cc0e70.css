@@ -79,7 +79,6 @@
     --dl-space-space-unit: 16px;
     --dl-space-space-halfunit: 8px;
     --dl-space-space-sixunits: 96px;
-    --dl-space-space-twounits: 32px;
     --dl-color-custom-primary1: #D1510A;
     --dl-color-custom-primary2: #923A06;
     --dl-color-custom-neutral-dark: #150A02;
@@ -166,7 +165,18 @@
     font-weight: 400;
     line-height: 150%;
 }
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
 
-.home-navbar-interactive {
-    padding: var(--dl-space-space-unit);
-}
+
+ */
