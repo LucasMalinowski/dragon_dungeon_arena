@@ -1,0 +1,60 @@
+# == Schema Information
+#
+# Table name: characters
+#
+#  id                  :bigint           not null, primary key
+#  action_points       :integer
+#  armor_class         :integer
+#  charisma            :integer
+#  constitution        :integer
+#  dexterity           :integer
+#  experience          :float
+#  extra_action_points :integer
+#  hp                  :integer
+#  initiative          :integer
+#  intelligence        :integer
+#  level               :integer
+#  mana                :integer
+#  name                :string
+#  speed               :float
+#  strength            :integer
+#  wisdom              :integer
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#
+
+one:
+  name: MyString
+  hp: 1
+  mana: 1
+  action_points: 1
+  extra_action_points: 1
+  strength: 1
+  dexterity: 1
+  constitution: 1
+  intelligence: 1
+  wisdom: 1
+  charisma: 1
+  armor_class: 1
+  initiative: 1
+  speed: 1.5
+  level: 1
+  experience: 1.5
+
+two:
+  name: MyString
+  hp: 1
+  mana: 1
+  action_points: 1
+  extra_action_points: 1
+  strength: 1
+  dexterity: 1
+  constitution: 1
+  intelligence: 1
+  wisdom: 1
+  charisma: 1
+  armor_class: 1
+  initiative: 1
+  speed: 1.5
+  level: 1
+  experience: 1.5
