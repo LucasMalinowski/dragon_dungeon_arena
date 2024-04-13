@@ -1,29 +1,37 @@
 <div>
-  <div class="home-container">
-    <div class="home-header">
-      <header data-thq="thq-navbar" class="navbarContainer home-navbar-interactive"><span class="logo">DUNGEON</span>
-        <div data-thq="thq-navbar-nav" class="home-desktop-menu">
-          <nav class="home-links"><span class="bodySmall">Profile</span>
-            <span class="home-nav22 bodySmall">Sheets</span>
-            <span class="home-nav32 bodySmall">Characters</span>
+  <div class="w-full flex min-h-screen items-center flex-col bg-stone-950">
+    <div class="w-full">
+      <header class="text-white w-full flex items-center px-6 py-4 bg-stone-800">
+        <span class="text-4xl	font-bold	leading-norma">DUNGEON</span>
+        <div class="flex-auto flex justify-between">
+          <nav class="flex-auto flex items-center justify-center gap-5 text-base font-normal leading-normal">
+            <span>Profile</span>
+            <span>Sheets</span>
+            <span>Characters</span>
           </nav>
-          <div class="home-buttons">
-            <button class="home-login buttonFilled1">Login</button>
-            <button class="buttonFilled">Register</button>
+          <div class="flex flex-row justify-between items-center">
+            <% if user_signed_in? %>
+              <span class="text-base font-normal leading-normal">Welcome, <%= current_user.username %></span>
+              <%= button_to destroy_user_session_path, method: :delete,class: "flex" do %>
+                <i class='bx bx-log-out ml-1'></i>
+              <% end %>
+            <% else %>
+              <%= link_to "Login", new_user_session_path, class:"mr-8 text-white font-bold py-2 px-6 rounded-3xl bg-green-700 hover:bg-green-900" %>
+              <%= link_to "Register", new_user_registration_path, class:"text-white font-bold py-2 px-6 rounded-3xl bg-orange-700 hover:bg-orange-900" %>
+            <% end %>
           </div>
         </div>
       </header>
     </div>
-    <div class="home-hero">
-      <div class="home-hero1 heroContainer">
-        <div class="home-container1">
-          <h1 class="home-hero-heading heading1">Embark on an Epic Adventure</h1>
-          <div class="home-btn-group">
-            <button class="buttonFilled">Play Now</button>
-          </div>
+    <div class="flex-initial w-full mt-24	h-auto flex items-start justify-center">
+      <div class="text-white w-full flex min-h-auto items-center flex-col justify-center bg-stone-950 my-24">
+        <div class="flex items-center flex-col justify-start">
+          <h1 class="text-center text-5xl	font-bold	leading-norma">Embark on an Epic Adventure</h1>
+          <button class="text-white font-bold py-2 px-6 rounded-3xl bg-orange-700 hover:bg-orange-900 mt-5">Play Now</button>
         </div>
       </div>
     </div>
   </div>
 </div>
+
 
