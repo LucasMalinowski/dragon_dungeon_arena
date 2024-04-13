@@ -1,0 +1,45 @@
+<body class="flex justify-center items-center min-h-screen bg-[url('/assets/gates.png')] bg-no-repeat bg-cover bg-center">
+  <div class="w-1/3 bg-transparent border-2 border-solid border-white/25 backdrop-blur text-white rounded-xl py-7 px-10">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <h1 class="text-center text-4xl	">Sign Up</h1>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <div class="relative w-full h-12 my-3">
+        <i class='bx bxs-user absolute right-5 h-5 translate-y-1/2 text-xl'></i>
+        <%= f.text_field :username, autofocus: true, class: "w-full h-full bg-transparent border-0 outline-0 border-2 border-white/25 rounded-3xl text-base text-white py-5 pr-11 pl-5 placeholder:text-white", placeholder: "Username" %>
+      </div>
+
+      <div class="relative w-full h-12 my-2">
+        <i class='bx bxs-envelope absolute right-5 h-5 translate-y-1/2 text-xl'></i>
+        <%= f.text_field :email, class: "w-full h-full bg-transparent border-0 outline-0 border-2 border-white/25 rounded-3xl text-base text-white py-5 pr-11 pl-5 placeholder:text-white", placeholder: "Email" %>
+      </div>
+
+      <div class="relative w-full h-12 my-7">
+        <% if @minimum_password_length %>
+          <em class="text-xs">(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <i class='bx bxs-lock-alt absolute right-5 h-5 translate-y-1/2 text-xl'></i>
+        <%= f.password_field :password, autocomplete: "new-password", class: "w-full h-full bg-transparent border-0 outline-0 border-2 border-white/25 rounded-3xl text-base text-white py-5 pr-11 pl-5 placeholder:text-white", placeholder: "Password" %>
+      </div>
+      <div class="relative w-full h-12 my-7">
+        <i class='bx bxs-lock-alt absolute right-5 h-5 translate-y-1/2 text-xl'></i>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "w-full h-full bg-transparent border-0 outline-0 border-2 border-white/25 rounded-3xl text-base text-white py-5 pr-11 pl-5 placeholder:text-white", placeholder: "Password Confirmation" %>
+      </div>
+
+      <div class="flex justify-between text-sm -mt-4 mb-4">
+        <label class="accent-white mr-1">
+          <input type="checkbox" class="accent-white mr-1">
+          Remember me
+        </label>
+        <a href="#" class="text-white no-underline hover:underline">Forgot password?</a>
+      </div>
+
+      <%= f.submit "Sign up", class: "btn w-full h-11 bg-white rounded-3xl pointer text-base text-gray-700 font-semibold" %>
+
+      <div class="text-sm text-center marging mb-4 mt-5">
+        Already a member?
+        <%= link_to "LogIn", new_user_session_path, class:"text-white no-underline hover:underline font-semibold"	 %>
+      </div>
+    <% end %>
+  </div>
+</body>
