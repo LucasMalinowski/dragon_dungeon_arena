@@ -1,3 +1,4 @@
 .env
 /dragon_dungeon_arena/tmp/
 /log/* .log /tmp/ !/log/.keep !/tmp/.keep
+/.idea/git_toolbox_prj.xml
