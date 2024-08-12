@@ -1,22 +1,34 @@
-# Dockerfile development version
-FROM ruby:3.1.4 AS dragon_dungeon_arena-development
+# Dockerfile
+FROM ruby:3.1.4 AS base
 
-# Install yarn
-RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg -o /root/yarn-pubkey.gpg && apt-key add /root/yarn-pubkey.gpg
-RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/yarn.list
-RUN apt-get update && apt-get install -y --no-install-recommends nodejs yarn
+# Install yarn and nodejs
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
+  && echo "deb https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/yarn.list \
+  && apt-get update \
+  && apt-get install -y --no-install-recommends nodejs yarn libsqlite3-0 libvips \
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/*
 
-# Default directory
-ENV INSTALL_PATH /opt/app
-RUN mkdir -p $INSTALL_PATH
+# Rails app lives here
+WORKDIR /dragon_dungeon_arena
 
 # Install gems
-WORKDIR $INSTALL_PATH
-COPY dragon_dungeon_arena/ .
-RUN rm -rf node_modules vendor
-RUN gem install rails bundler
+COPY Gemfile Gemfile.lock ./
+RUN gem install bundler
 RUN bundle install
+
+# Install application dependencies
+COPY . .
 RUN yarn install
 
+# Precompile assets
+RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
+
+# Ensure the correct permissions
+RUN chown -R nobody:nogroup /dragon_dungeon_arena
+
+# Entrypoint prepares the database.
+ENTRYPOINT ["./entrypoint.sh"]
+
 # Start server
-CMD bundle exec unicorn -c config/unicorn.rb
+CMD ["bundle", "exec", "unicorn", "-c", "config/unicorn.rb"]

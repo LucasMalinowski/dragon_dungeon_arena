@@ -1,0 +1,21 @@
+
+default: &default
+  adapter: postgresql
+  pool: 5
+  username: postgres
+  password: postgres
+  host: postgres
+  port: 5432
+  timeout: 5000
+
+development:
+  << : *default
+  database: dragon_dungeon_arena_development
+
+test:
+    << : *default
+    database: dragon_dungeon_arena_test
+
+production:
+    << : *default
+    database: dragon_dungeon_arena_production
