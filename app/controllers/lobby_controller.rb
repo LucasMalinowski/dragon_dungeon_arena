@@ -1,3 +1,5 @@
 class LobbyController < ApplicationController
-  def home; end
+  def home
+    @photos = [User.first.avatar, User.first.avatar]
+  end
 end

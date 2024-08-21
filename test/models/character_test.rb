@@ -2,25 +2,19 @@
 #
 # Table name: characters
 #
-#  id                  :bigint           not null, primary key
-#  action_points       :integer
-#  armor_class         :integer
-#  charisma            :integer
-#  constitution        :integer
-#  dexterity           :integer
-#  experience          :float
-#  extra_action_points :integer
-#  hp                  :integer
-#  initiative          :integer
-#  intelligence        :integer
-#  level               :integer
-#  mana                :integer
-#  name                :string
-#  speed               :float
-#  strength            :integer
-#  wisdom              :integer
-#  created_at          :datetime         not null
-#  updated_at          :datetime         not null
+#  id         :bigint           not null, primary key
+#  current_hp :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  sheet_id   :bigint           not null
+#
+# Indexes
+#
+#  index_characters_on_sheet_id  (sheet_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (sheet_id => sheets.id)
 #
 require "test_helper"
 

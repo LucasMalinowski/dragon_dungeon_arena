@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @sheet %>
+
+<div>
+  <%= link_to "Edit this sheet", edit_sheet_path(@sheet) %> |
+  <%= link_to "Back to sheets", sheets_path %>
+
+  <%= button_to "Destroy this sheet", @sheet, method: :delete %>
+</div>

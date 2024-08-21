@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :sheets
   devise_for :users, controllers: { registrations: 'users/registrations' }
   resources :characters
   root 'lobby#home'

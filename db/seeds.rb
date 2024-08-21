@@ -7,3 +7,19 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+CURRENT_PATH = File.dirname(__FILE__)
+
+Dir["#{CURRENT_PATH}/seeds/**/*.rb"].each do |file_path|
+  next if file_path.include?("non_prod_seeds")
+
+  require file_path
+
+  puts "Creating #{File.basename(file_path, ".*")}..."
+  puts "\n"
+end
+
+unless Rails.env.production?
+  require "#{CURRENT_PATH}/seeds/non_prod_seeds.rb"
+end
+

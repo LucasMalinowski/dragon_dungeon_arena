@@ -40,8 +40,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
 
+  def update_resource(resource, params)
+    # If the user is trying to update their password, require the current password
+    if params[:password].present? || params[:password_confirmation].present?
+      super
+    else
+      # Otherwise, just update the profile without password
+      resource.update_without_password(params)
+    end
+  end
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
   #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
@@ -63,7 +72,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   def configure_permitted_parameters
-    p "AAAAAAAAAAAAAAAAAAAAAAAAAaa"
-    devise_parameter_sanitizer.permit(:sign_up, keys: %i[username email password password_confirmation])
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[username avatar email password password_confirmation])
+    devise_parameter_sanitizer.permit(:account_update, keys: %i[username avatar email password password_confirmation current_password])
   end
 end

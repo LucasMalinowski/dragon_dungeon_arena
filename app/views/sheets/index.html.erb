@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Sheets</h1>
+
+<div id="sheets">
+  <% @sheets.each do |sheet| %>
+    <%= render sheet %>
+    <p>
+      <%= link_to "Show this sheet", sheet %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New sheet", new_sheet_path %>

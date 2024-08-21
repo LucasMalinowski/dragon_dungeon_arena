@@ -1,0 +1,3 @@
+# Create all classes from dnd5e, with their respective attributes
+
+# Classes.create(name: "Barbarian", hit_die: 12, primary_ability: "Strength", saving_throws: ["Strength", "Constitution"], armor_proficiencies: ["Light armor", "Medium armor", "Shields"], weapon_proficiencies: ["Simple weapons", "Martial weapons"], skill_proficiencies: ["Animal Handling", "Athletics", "Intimidation", "Nature", "Perception", "Survival"], equipment: ["Greataxe", "Any martial melee weapon", "Two handaxes", "Explorer's pack", "Four javelins"], description: "A fierce warrior of primitive background who can enter a battle rage", image: "barbarian.png")

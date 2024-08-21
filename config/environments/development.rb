@@ -4,6 +4,8 @@ Rails.application.configure do
   config.hosts << "dragon_dungeon_arena"
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  BetterErrors::Middleware.allow_ip! "0.0.0.0/0"
+
 
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -65,7 +67,7 @@ Rails.application.configure do
 
   # Suppress logger output for asset requests.
   config.assets.quiet = true
-
+  config.assets.compile = true
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
 
